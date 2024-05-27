@@ -132,7 +132,7 @@ def join_lists(lists: Iterable[list[Any]]) -> list[Any]:
 
 def flatten(o: Iterable[Any] | Any) -> list[Any]:
     def iterate(x: Any) -> Iterable[Any]:
-        if not isinstance(o, list | tuple):
+        if not isinstance(o, (list, tuple)):
             yield x
             return
 
@@ -172,7 +172,7 @@ def eval_escapes(s: str | bytes) -> str | bytes:
 
 def isiter(value):
     return isinstance(value, Iterable) and not isinstance(
-        value, str | bytes | bytearray,
+        value, (str, bytes, bytearray),
     )
 
 

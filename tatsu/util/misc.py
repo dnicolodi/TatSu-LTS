@@ -1,8 +1,16 @@
 from __future__ import annotations
 
 import re
+import sys
 from collections.abc import Iterable
-from functools import cache
+from typing import TypeVar
+
+if sys.version_info > (3, 9):
+    from functools import cache
+else:
+    from functools import lru_cache
+    cache = lru_cache(None)
+
 
 _undefined = object()  # unique object for when None is not a good default
 
@@ -81,7 +89,10 @@ def findfirst(pattern, string, pos=None, endpos=None, flags=0, default=_undefine
     )
 
 
-def topsort[T](nodes: Iterable[T], order: Iterable[tuple[T, T]]) -> list[T]:
+T = TypeVar("T")
+
+
+def topsort(nodes: Iterable[T], order: Iterable[tuple[T, T]]) -> list[T]:
     # https://en.wikipedia.org/wiki/Topological_sorting
 
     order = set(order)
@@ -111,4 +122,4 @@ def topsort[T](nodes: Iterable[T], order: Iterable[tuple[T, T]]) -> list[T]:
 def cached_re_compile(regex: re.Pattern | str | bytes) -> re.Pattern | None:
     if isinstance(regex, re.Pattern):
         return regex
-    return re.compile(regex) if isinstance(regex, (str | bytes)) else None
+    return re.compile(regex) if isinstance(regex, (str, bytes)) else None

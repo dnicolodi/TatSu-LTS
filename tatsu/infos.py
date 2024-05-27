@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from collections.abc import Callable
 from typing import NamedTuple
 
@@ -11,6 +12,8 @@ from .parserconfig import (  # re-export from legacy
 
 # package
 from .tokenizing import Tokenizer
+
+from .util import zip
 
 assert ParserConfig and UndefinedStr and _undefined_str  # type: ignore
 

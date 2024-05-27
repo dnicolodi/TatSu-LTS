@@ -52,7 +52,7 @@ class ModelBuilderSemantics:
         return constructor
 
     def _find_existing_constructor(self, typename: str) -> Callable | None:
-        context: Mapping[Any, Any] = vars(builtins) | registered_symthetics()
+        context: Mapping[Any, Any] = {**vars(builtins), **registered_symthetics()}
         constructor = context.get(typename)
         if constructor is not None:
             return constructor

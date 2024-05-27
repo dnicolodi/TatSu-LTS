@@ -4,13 +4,13 @@ import copy
 import operator
 from collections.abc import Iterable
 from functools import reduce
-from typing import Any
+from typing import Any, Dict, List
 
 from .infos import ParseInfo
 from .util import asjson, is_list
 
 
-class AST(dict[str, Any]):
+class AST(Dict[str, Any]):
     _frozen = False
 
     def __init__(self, *args: Any, **kwargs: Any):
@@ -55,7 +55,7 @@ class AST(dict[str, Any]):
 
         super().__setitem__(key, value)
 
-    def _setlist(self, key: str, value: list[Any]) -> None:
+    def _setlist(self, key: str, value: List[Any]) -> None:
         self._set(key, value, force_list=True)
 
     def __copy__(self) -> AST:

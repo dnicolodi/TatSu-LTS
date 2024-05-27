@@ -1,20 +1,23 @@
 from __future__ import annotations
 
+import typing as T
 from collections.abc import Callable, Collection, Mapping
 from contextlib import contextmanager
-from typing import Any, ClassVar, Concatenate, cast
+from typing import Any, ClassVar, Dict, cast
 
 from .objectmodel import Node
 from .util import is_list, pythonize_name
 
-type WalkerMethod = Callable[Concatenate[NodeWalker, Any, ...], Any]
+if T.TYPE_CHECKING:
+    from typing_extensions import Concatenate
+    WalkerMethod = Callable[Concatenate['NodeWalker', Any, ...], Any]
 
 
 class NodeWalkerMeta(type):
     def __new__(mcs, name, bases, dct):  # type: ignore
         cls = super().__new__(mcs, name, bases, dct)
         # note: a different cache for each subclass
-        cls._walker_cache: dict[str, WalkerMethod | None] = {}  # type: ignore
+        cls._walker_cache: Dict[str, WalkerMethod | None] = {}  # type: ignore
         return cls
 
 
@@ -27,9 +30,8 @@ class NodeWalker(metaclass=NodeWalkerMeta):
         return self._walker_cache
 
     def walk(self, node: Node | Collection[Node], *args, **kwargs) -> Any:
-        if isinstance(node, list | tuple):
-            actual1 = cast(tuple[Node] | list[Node], node)
-            return [self.walk(n, *args, **kwargs) for n in actual1]
+        if isinstance(node, (list, tuple)):
+            return [self.walk(n, *args, **kwargs) for n in node]
 
         if isinstance(node, Mapping):
             actual2 = cast(Mapping[str, Any], node)

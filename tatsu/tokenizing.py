@@ -3,6 +3,8 @@ from __future__ import annotations
 from itertools import starmap
 from typing import Any, NamedTuple, Protocol, runtime_checkable
 
+from .util import zip
+
 
 @runtime_checkable
 class Tokenizer(Protocol):
