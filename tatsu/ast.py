@@ -4,13 +4,13 @@ import copy
 import operator
 from collections.abc import Iterable
 from functools import reduce
-from typing import Any
+from typing import Any, Dict
 
 from .infos import ParseInfo
 from .util import asjson, is_list
 
 
-class AST(dict[str, Any]):
+class AST(Dict[str, Any]):
     _frozen = False
 
     def __init__(self, *args: Any, **kwargs: Any):

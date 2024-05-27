@@ -6,6 +6,7 @@ from collections.abc import Callable, Collection, Mapping
 from copy import copy
 from itertools import takewhile
 from pathlib import Path
+from typing import Set, Tuple
 
 from .ast import AST
 from .contexts import ParseContext
@@ -18,7 +19,7 @@ from .util import chunks, compress_seq, indent, re, trim
 PEP8_LLEN = 72
 PRAGMA_RE = r'^\s*#include.*$'
 
-type ffset = set[tuple[str, ...]]
+ffset = Set[Tuple[str, ...]]
 
 
 class _ref(str):
@@ -867,7 +868,7 @@ class Rule(Decorator):
 
     @staticmethod
     def param_repr(p):
-        if isinstance(p, int | float) or (isinstance(p, str) and p.isalnum()):
+        if isinstance(p, (int, float)) or (isinstance(p, str) and p.isalnum()):
             return str(p)
         else:
             return repr(p)

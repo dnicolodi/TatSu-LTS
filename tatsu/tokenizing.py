@@ -1,7 +1,13 @@
 from __future__ import annotations
 
+import builtins
+import sys
 from itertools import starmap
 from typing import Any, NamedTuple, Protocol, runtime_checkable
+
+if sys.version_info < (3, 10):
+    def zip(*iterables, strict=False):
+        return builtins.zip(*iterables)
 
 
 @runtime_checkable

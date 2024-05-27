@@ -1,7 +1,10 @@
-from typing import Any
+from typing import Any, Generic, TypeVar
+
+KT = TypeVar("KT")
+VT = TypeVar("VT")
 
 
-class BoundedDict[KT, VT](dict[KT, VT]):
+class BoundedDict(dict, Generic[KT, VT]):
     def __init__(self, capacity: int, *args: Any, **kwargs: Any) -> None:
         if capacity <= 0:
             raise ValueError("capacity must be positive")

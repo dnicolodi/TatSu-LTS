@@ -84,12 +84,12 @@ class ANTLRSemantics:
         return None
 
     def optional(self, ast: AST) -> model.Optional:
-        if isinstance(ast, model.Group | model.Optional | model.Closure):
+        if isinstance(ast, (model.Group, model.Optional, model.Closure)):
             ast = ast.exp
         return model.Optional(ast)
 
     def closure(self, ast: AST) -> model.Closure:
-        if isinstance(ast, model.Group | model.Optional):
+        if isinstance(ast, (model.Group, model.Optional)):
             ast = ast.exp
         return model.Closure(ast)
 

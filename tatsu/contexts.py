@@ -8,7 +8,7 @@ import sys
 from collections.abc import Callable, Generator, Iterable
 from contextlib import contextmanager, suppress
 from copy import copy
-from typing import Any, NamedTuple, NoReturn, Protocol, cast
+from typing import Any, List, NamedTuple, NoReturn, Protocol, cast
 
 from . import buffering, color, tokenizing
 from .ast import AST
@@ -61,7 +61,7 @@ class MemoKey(NamedTuple):
     state: Any
 
 
-@dataclasses.dataclass(slots=True)
+@dataclasses.dataclass(**({'slots': True} if sys.version_info >= (3, 10) else {}))
 class ParseState:
     pos: int = 0
     ast: Any = dataclasses.field(default_factory=dict)
@@ -137,7 +137,7 @@ def isname(impl: Callable) -> Callable:
     return impl
 
 
-class closure(list[Any]):
+class closure(List[Any]):
     def __hash__(self) -> int:  # type: ignore
         return hash(tuple(self))
 
