@@ -24,7 +24,7 @@ class AsJSONMixin:
 
 
 def asjson(obj, seen=None):  # noqa: PLR0911, PLR0912
-    if obj is None or isinstance(obj, int | float | str | bool):
+    if obj is None or isinstance(obj, (int, float, str, bool)):
         return obj
 
     if seen is None:
@@ -32,11 +32,11 @@ def asjson(obj, seen=None):  # noqa: PLR0911, PLR0912
     elif id(obj) in seen:
         return f'{type(obj).__name__}@{id(obj)}'
 
-    if isinstance(obj, Mapping | AsJSONMixin) or isiter(obj):
+    if isinstance(obj, (Mapping, AsJSONMixin)) or isiter(obj):
         seen.add(id(obj))
 
     try:
-        if isinstance(obj, weakref.ReferenceType | weakref.ProxyType):
+        if isinstance(obj, (weakref.ReferenceType, weakref.ProxyType)):
             return f'{obj.__class__.__name__}@0x{hex(id(obj)).upper()[2:]}'
         elif hasattr(obj, '__json__'):
             return obj.__json__(seen=seen)
@@ -70,7 +70,7 @@ def plainjson(obj):
             for name, value in obj.items()
             if name not in {'__class__', 'parseinfo'}
         }
-    elif isinstance(obj, weakref.ReferenceType | weakref.ProxyType):
+    elif isinstance(obj, (weakref.ReferenceType, weakref.ProxyType)):
         return '@ref'
     elif isinstance(obj, str) and obj.startswith('@'):
         return '@ref'

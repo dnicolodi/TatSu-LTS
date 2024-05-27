@@ -26,6 +26,8 @@ HEADER = """\
 
     # ruff: noqa: C405, COM812, I001, F401, PLR1702, PLC2801, SIM117
 
+    from __future__ import annotations
+
     import sys
     from pathlib import Path
 
@@ -93,7 +95,7 @@ class PythonCodeGenerator(IndentPrintMixin, NodeWalker):
 
     def walk_Rule(self, rule: grammars.Rule):
         def param_repr(p):
-            if isinstance(p, int | float):
+            if isinstance(p, (int, float)):
                 return str(p)
             else:
                 return repr(p.split('::')[0])
