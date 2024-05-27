@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import dataclasses
 import re
+import sys
 from collections.abc import Callable, MutableMapping
 from itertools import starmap
 from typing import Any, NamedTuple
@@ -11,6 +12,12 @@ from .ast import AST
 from .tokenizing import Tokenizer
 from .util.misc import cached_re_compile
 from .util.unicode_characters import C_DERIVE
+
+if sys.version_info < (3, 10):
+    import builtins
+
+    def zip(*iterables, strict=False):
+        return builtins.zip(*iterables)
 
 
 class UndefinedStr(str):
@@ -261,7 +268,7 @@ class RuleResult(NamedTuple):
     newstate: Any
 
 
-@dataclasses.dataclass(slots=True)
+@dataclasses.dataclass(**({'slots': True} if sys.version_info >= (3, 10) else {}))
 class ParseState:
     pos: int = 0
     ast: AST = dataclasses.field(default_factory=AST)
