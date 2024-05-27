@@ -1,9 +1,15 @@
 from __future__ import annotations
 
 import re
+import sys
 from collections.abc import Iterable
-from functools import cache
 from typing import TypeVar
+
+if sys.version_info > (3, 9):
+    from functools import cache
+else:
+    from functools import lru_cache
+    cache = lru_cache(None)
 
 _T = TypeVar('_T')
 
@@ -114,4 +120,4 @@ def topsort(nodes: Iterable[_T], order: Iterable[tuple[_T, _T]]) -> list[_T]:
 def cached_re_compile(regex: re.Pattern | str | bytes) -> re.Pattern | None:
     if isinstance(regex, re.Pattern):
         return regex
-    return re.compile(regex) if isinstance(regex, (str | bytes)) else None
+    return re.compile(regex) if isinstance(regex, (str, bytes)) else None
