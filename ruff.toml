@@ -52,7 +52,7 @@ exclude = [
     "docs",
 ]
 
-target-version = "py312"
+target-version = "py38"
 
 [lint.per-file-ignores]
 
