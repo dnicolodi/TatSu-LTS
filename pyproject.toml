@@ -13,7 +13,7 @@ maintainers = [
 ]
 description = "TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python."
 readme = "README.rst"
-requires-python = ">=3.12"
+requires-python = ">=3.8"
 keywords = []
 license = {file = "LICENSE"}
 classifiers = [
@@ -24,6 +24,10 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "Environment :: Console",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
