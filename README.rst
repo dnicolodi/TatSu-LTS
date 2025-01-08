@@ -9,21 +9,22 @@
 | |fury|
 | |actions|
 | |docs|
-| |installs|
-| |sponsor|
 |
 
-    *At least for the people who send me mail about a new language that
-    they're designing, the general advice is: do it to learn about how
-    to write a compiler. Don't have any expectations that anyone will
-    use it, unless you hook up with some sort of organization in a
-    position to push it hard. It's a lottery, and some can buy a lot of
-    the tickets. There are plenty of beautiful languages (more beautiful
-    than C) that didn't catch on. But someone does win the lottery, and
-    doing a language at least teaches you something.*
+|TatSu-LTS|
+===========
 
-    `Dennis Ritchie`_ (1941-2011) Creator of the C_ programming
-    language and of Unix_
+|TatSu-LTS| is a friendly fork of |TatSu|_ that guarantees compatibility with all `supported versions of Python`_.
+Compatibility with older Python versions is maintained as long as that does not require additional changes.
+Only patches required to support Python version older than the ones supported by the upstream project are applied.
+|TatSu-LTS| releases use the same version number as the |TatSu| release on which they are based and should be published shortly after the corresponding upstream release.
+
+Both the |TatSu| and |TatSu-LTS| distributions install a Python package and an executable named ``tatsu``.
+Users can thus switch seamlessly between the two, depending on which Python version support guarantees they prefer.
+For project that desire to support a wide range of Python versions, there is no drawback in depending on |TatSu-LTS| other than the short delay in the release of new versions.
+
+.. _TatSu: https://github.com/neogeny/TatSu
+.. _supported versions of Python: https://devguide.python.org/versions/#supported-versions
 
 
 |TatSu|
@@ -60,7 +61,7 @@ Installation
 
 .. code-block:: bash
 
-    $ pip install TatSu
+    $ pip install TatSu-LTS
 
 
 Using the Tool
@@ -293,19 +294,15 @@ requires different licensing* please `email`_.
 .. _vinay.sajip: https://bitbucket.org/vinay.sajip
 .. _vmuriart: https://bitbucket.org/vmuriart
 
-.. |fury| image:: https://badge.fury.io/py/TatSu.svg
-   :target: https://badge.fury.io/py/TatSu
+.. |fury| image:: https://badge.fury.io/py/TatSu-LTS.svg
+   :target: https://badge.fury.io/py/TatSu-LTS
 .. |license| image:: https://img.shields.io/badge/license-BSD-blue.svg
-   :target: https://raw.githubusercontent.com/neogeny/tatsu/master/LICENSE
-.. |pyversions| image:: https://img.shields.io/pypi/pyversions/tatsu.svg
-   :target: https://pypi.python.org/pypi/tatsu
-.. |actions| image:: https://github.com/neogeny/TatSu/actions/workflows/default.yml/badge.svg
-   :target: https://github.com/neogeny/TatSu/actions/workflows/default.yml
-.. |docs| image:: https://readthedocs.org/projects/tatsu/badge/?version=stable&logo=readthedocs
+   :target: https://raw.githubusercontent.com/dnicolodi/TatSu-LTS/master/LICENSE.txt
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/TatSu-LTS.svg
+   :target: https://pypi.python.org/pypi/TatSu-LTS
+.. |actions| image:: https://github.com/dnicolodi/TatSu-LTS/actions/workflows/default.yml/badge.svg
+   :target: https://github.com/dnicolodi/TatSu-LTS/actions/workflows/default.yml
+.. |docs| image:: https://readthedocs.org/projects/tatsu/badge/?version=stable
    :target: http://tatsu.readthedocs.io/en/stable/
-.. |installs| image:: https://img.shields.io/pypi/dm/tatsu.svg?label=installs&logo=pypi
-   :target: https://pypistats.org/packages/tatsu
-.. |downloads| image:: https://img.shields.io/github/downloads/neogeny/tatsu/total?label=downloads
-   :target: https://pypistats.org/packages/tatsu
-.. |sponsor| image:: https://img.shields.io/badge/Sponsor-EA4AAA?label=TatSu
-   :target: https://github.com/sponsors/neogeny
+.. |downloads| image:: https://img.shields.io/pypi/dm/TatSu-LTS.svg
+   :target: https://pypistats.org/packages/tatsu-lts
