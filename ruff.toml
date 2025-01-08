@@ -20,6 +20,7 @@ lint.ignore = [
     "PERF203", # try-except within loop
     "PGH003",
     "PLC0415",  # import-outside-top-level
+    "PLC1802",  # len-test
     "PLR6301",  # no-self-use
     "PLR0904",  # too-many-public-methods
     "PLR0913",  # too-many-arguments
@@ -34,6 +35,9 @@ lint.ignore = [
     "RET505",  # superfluous-else-return
     "RUF022",  # __all__ sorting
     "RUF027",  # possible f-string
+    "RUF039",  # unraw-re-pattern
+    "RUF052",  # used-dummy-variable
+    "RUF067",  # non-empty-init-module
     "S102",  # exec-builtin
 #    "S105",  # hardcoded-password-string
     "S101",  # use of assert
