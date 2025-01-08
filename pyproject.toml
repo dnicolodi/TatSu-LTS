@@ -45,8 +45,8 @@ tatsu = "tatsu:main"
 g2e = "tatsu.g2e:main"
 
 [project.urls]
-Homepage = "https://github.com/neogeny/TatSu"
-Repository = "https://github.com/neogeny/TatSu"
+Homepage = "https://github.com/dnicolodi/TatSu-LTS"
+Repository = "https://github.com/dnicolodi/TatSu-LTS"
 Documentation = "https://tatsu.readthedocs.io/en/stable/"
 Questions = "https://stackoverflow.com/questions/tagged/tatsu"
 
