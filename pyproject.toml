@@ -3,10 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "TatSu"
+name = "TatSu-LTS"
 dynamic = ["version"]
 authors = [
     {name = "Juancarlo Añez", email = "apalala@gmail.com"},
+]
+maintainers = [
+    {name = "Daniele Nicolodi", email = "daniele@grinta.net"},
 ]
 description = "TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python."
 readme = "README.rst"
