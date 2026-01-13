@@ -3,7 +3,7 @@ from __future__ import annotations
 import typing as T
 from collections.abc import Callable, Collection, Mapping
 from contextlib import contextmanager
-from typing import Any, ClassVar, Dict, cast
+from typing import Any, ClassVar, cast
 
 from .objectmodel import Node
 from .util import is_list, pythonize_name
@@ -17,7 +17,7 @@ class NodeWalkerMeta(type):
     def __new__(mcs, name, bases, dct):  # type: ignore
         cls = super().__new__(mcs, name, bases, dct)
         # note: a different cache for each subclass
-        cls._walker_cache: Dict[str, WalkerMethod | None] = {}  # type: ignore
+        cls._walker_cache: dict[str, WalkerMethod | None] = {}  # type: ignore
         return cls
 
 

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import sys
 import typing as T
 import weakref
 from collections.abc import Callable, Iterator, Mapping
