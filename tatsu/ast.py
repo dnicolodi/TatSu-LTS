@@ -4,7 +4,7 @@ import copy
 import operator
 from collections.abc import Iterable
 from functools import reduce
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 from .infos import ParseInfo
 from .util import asjson, is_list
@@ -55,7 +55,7 @@ class AST(Dict[str, Any]):
 
         super().__setitem__(key, value)
 
-    def _setlist(self, key: str, value: List[Any]) -> None:
+    def _setlist(self, key: str, value: list[Any]) -> None:
         self._set(key, value, force_list=True)
 
     def __copy__(self) -> AST:
